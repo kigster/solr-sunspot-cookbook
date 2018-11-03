@@ -1,20 +1,26 @@
+[![Build Status](https://travis-ci.org/kigster/solr-sunspot-cookbook.svg?branch=master)](https://travis-ci.org/kigster/solr-sunspot-cookbook)
+
 # Solr Sunspot Cookbook
 
-This comprehensive chef cookbook installs Solr as a system service, and configures it to be used with the [sunspot](https://github.com/sunspot) rubuy gem.
+This comprehensive chef cookbook installs Solr as a system service, and configures it to be used with the [sunspot](https://github.com/sunspot) ruby gem.
+
+This cookbook supports Solr version 5, and possibly higher.
 
 In a nutshell, the cookbook is able to:
 
  * Download and install java
  * Download and install Solr
  * Setup Solr as a service, using OS dependent methods:
-  * Either using `systemd_unit` on Linux supporting SystemD
-  * Or via a simple `/etc/init.d` script
-  * Or via SMF on Solarisl, Illumnos or SmartOS.
+    * Linux:
+        * Either using `systemd_unit` service definition
+        * Or using a simple `/etc/init.d/solr` script
+    * Solaris, Illumnos or SmartOS:
+        * Using SMF
 
 ## Offered Resources
 
 ### Resource `solr`
-s
+
 Install a specific version of Solr, explicitly configured via the provider attributes.
 
 ```ruby
