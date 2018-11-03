@@ -1,0 +1,9 @@
+handlers = java.util.logging.FileHandler
+
+# Rotate log file after reaching this size
+java.util.logging.FileHandler.limit = <%= node['solr']['solr_log_size'] %>
+java.util.logging.FileHandler.count = <%= node['solr']['solr_log_count'] %>
+
+java.util.logging.FileHandler.level = INFO
+java.util.logging.FileHandler.pattern = <%= node['solr']['solr_log_dir'] %>/<%= node['solr']['service_name'] %>.log
+java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter

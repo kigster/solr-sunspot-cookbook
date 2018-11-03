@@ -1,0 +1,36 @@
+---
+driver:
+  name: dokken
+  chef_version: latest
+
+transport:
+  name: dokken    
+
+provisioner:
+  name: dokken
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+    driver: 
+      image: dokken/ubuntu-16.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[dnsmadeeasy_test::credentials_file]
+      - recipe[dnsmadeeasy_test::record_a]
+      - recipe[dnsmadeeasy_test::record_cname]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
+      dnsmadeeasy_test:
+        api_key: "BAhTOh1TeW06OkRhdGE6OldyYXBwZXJTdHJ1Y3QLOhNlbmNyeXB0ZWRfZGF0YSJViFMoE43nVN9OBsL82TKRa6kzNMewJ4dIZu76jEgzmE8_O3hBFLcFF0g9QVdqY7yW1AuKd0c8FAEocaxgmat0BsgYPGbzJxgkS4zDBG8IzBw6B2l2IhXpxL3ozfg6YPFY4m-RvC84OhBjaXBoZXJfbmFtZSIQQUVTLTI1Ni1DQkM6CXNhbHQwOgx2ZXJzaW9uaQY6DWNvbXByZXNzVA=="
+        api_secret: "BAhTOh1TeW06OkRhdGE6OldyYXBwZXJTdHJ1Y3QLOhNlbmNyeXB0ZWRfZGF0YSJVASqs4-tgMPjzjCm1CMQa8EF3KoYvu2ODepU3OpEBo7m_aQ2D4eptbFa1G7c1ZGtS4mZvYioPF5mh5zXEuWBPgpCrraE_PaKIZWA5OztAOoU6B2l2IhUfHqdrrsMwux40P2z5roeNOhBjaXBoZXJfbmFtZSIQQUVTLTI1Ni1DQkM6CXNhbHQwOgx2ZXJzaW9uaQY6DWNvbXByZXNzVA=="
+        encryption_key: <%= ENV['DME_KEY'] %>
+      chef_client:
+        config:
+          log_level: info

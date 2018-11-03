@@ -1,0 +1,5 @@
+foodcritic: bundle exec foodcritic --epic-fail any --tags ~FC021 $SANDBOX/$COOKBOOK
+rubocop: bundle exec rubocop $SANDBOX/$COOKBOOK/libraries
+knife test: bundle exec knife cookbook test $COOKBOOK
+# chefspec: bundle exec rspec $SANDBOX/$COOKBOOK
+kitchen test: bundle exec kitchen test

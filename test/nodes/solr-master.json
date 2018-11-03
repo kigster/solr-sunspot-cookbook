@@ -1,0 +1,12 @@
+{
+  "id": "solr-master",
+  "run_list": ["role[solr-master]"],
+  "environment": "my-environment",
+  "automatic": {
+    "ipaddress": "1.1.1.1",
+    "privateaddress": "2.2.2.2",
+    "roles": [
+      "solr-master"
+    ]
+  }
+}
